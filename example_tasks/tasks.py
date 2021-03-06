@@ -1,4 +1,4 @@
-# Execute worker: celery -A task_events_monitoring.tasks worker --loglevel=INFO -E
+# Execute worker: celery -A example_tasks.tasks worker --loglevel=INFO -E
 # REMEMBER: In order to make worker to send events, the -E (--task-event) option
 # must be used ('worker_send_task_events' setting is disabled by default).
 
@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 # task_events_monitoring/tasks.py (this) file.
 # The application uses RabbitMQ as the broker and for results' storage.
 app = Celery(
-    'task_events_monitoring.tasks', 
+    'example_tasks.tasks', 
     broker='pyamqp://guest@localhost', 
     backend='rpc://'
 )
