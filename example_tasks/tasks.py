@@ -9,7 +9,7 @@ from celery.exceptions import Reject
 from bs4 import BeautifulSoup
 
 # Create the Celery application with tasks defined in the 
-# task_events_monitoring/tasks.py (this) file.
+# example_tasks/tasks.py (this) file.
 # The application uses RabbitMQ as the broker and for results' storage.
 app = Celery(
     'example_tasks.tasks', 
