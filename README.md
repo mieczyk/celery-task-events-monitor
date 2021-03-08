@@ -23,3 +23,27 @@ Run the task:
 >>> from example_tasks.tasks import visit
 >>> visit.delay('https://docs.celeryproject.org')
 ```
+
+### Test different scenarios
+
+The following examples show how to execute the tasks in order to generate each type of event the monitor can handle.
+
+Happy path (TASK-SENT; TASK-RECEIVED; TASK-STARTED; TASK-SUCCEEDED):
+```
+visit.delay('https://en.wikipedia.org/w/index.php', url_params=[('search', 'celery')])
+```
+
+TASK-RETRIED and TASK-FAILED:
+```
+visit.delay('https://en.wikipedia.org/not-existing')
+```
+
+TASK-REJECTED:
+```
+visit.delay('https://not-existing')
+```
+
+TASK-REVOKED:
+```
+visit.apply_async(('https://en.wikipedia.org/not-existing',), expires=1)
+```
